@@ -1,45 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/pages/home_page.dart';
 
 void main() {
-  runApp(const MaterialApp(
-    title: 'Welcome to Calculator App!',
-    home: homePage(),
-  ));
+  runApp(const MyApp());
 }
 
-class homePage extends StatelessWidget {
-  const homePage({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home Page'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          child: const Text('About Page'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const AboutPage()),
-            );
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class AboutPage extends StatelessWidget {
-  const AboutPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('About Page'),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
+      theme: ThemeData(brightness: Brightness.dark),
     );
   }
 }
