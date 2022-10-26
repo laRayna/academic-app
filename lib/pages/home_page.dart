@@ -15,15 +15,8 @@ var MONTHS = [
   "December"
 ];
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  DateTime date = DateTime(2022, 10, 07);
+class HomePage extends StatelessWidget {
+  DateTime date = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -37,22 +30,6 @@ class _HomePageState extends State<HomePage> {
               child: Icon(Icons.person),
             )
           ]),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calculate),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.map),
-            label: '',
-          )
-        ],
-      ),
       body: Column(children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -87,7 +64,7 @@ class _HomePageState extends State<HomePage> {
 
                     if (newDate == null) return;
 
-                    setState(() => date = newDate);
+                    date = newDate;
                   }),
             ],
           ),
