@@ -3,14 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class CalcPagez extends StatefulWidget {
-  const CalcPagez({Key? key}) : super(key: key);
+class CalcPage extends StatefulWidget {
+  const CalcPage({Key? key}) : super(key: key);
 
   @override
-  State<CalcPagez> createState() => _CalcPagezState();
+  State<CalcPage> createState() => _CalcPageState();
 }
 
-class _CalcPagezState extends State<CalcPagez> {
+class _CalcPageState extends State<CalcPage> {
   TextEditingController _DG = TextEditingController();
   TextEditingController _AS = TextEditingController();
   TextEditingController _MG = TextEditingController();
@@ -32,113 +32,119 @@ class _CalcPagezState extends State<CalcPagez> {
       resultsC = 0.0;
 
   Daily(double want) {
-    DG = double.parse(_DG.text);
-    AS = double.parse(_AS.text);
-    MG = double.parse(_MG.text);
-    stu = double.parse(_stu.text);
-    max = double.parse(_max.text);
-    weight = double.parse(_weight.text);
+    setState(() {
+      DG = double.parse(_DG.text);
+      AS = double.parse(_AS.text);
+      MG = double.parse(_MG.text);
+      stu = double.parse(_stu.text);
+      max = double.parse(_max.text);
+      weight = double.parse(_weight.text);
 
-    otherPts = MG! + AS!;
-    max = max! + 100;
+      otherPts = MG! + AS!;
+      max = max! + 100;
 
-    temp = double.parse(_poss.text);
-    if (temp! > 0.0) {
-      possible = (((stu! + temp!) / max!) * weight!) + otherPts!;
-    }
-    if (want > 80) {
-      resultsA = double.parse(
-          (max! * ((want - otherPts!) / weight!) - stu!).toStringAsFixed(2));
-      if (resultsA! > 100 || resultsA! < 0) {
-        resultsA = -1;
+      temp = double.parse(_poss.text);
+      if (temp! > 0.0) {
+        possible = (((stu! + temp!) / max!) * weight!) + otherPts!;
       }
-    } else if (want > 70) {
-      resultsB = double.parse(
-          (max! * ((want - otherPts!) / weight!) - stu!).toStringAsFixed(2));
-      if (resultsB! > 100 || resultsB! < 0) {
-        resultsB = -1;
+      if (want > 80) {
+        resultsA = double.parse(
+            (max! * ((want - otherPts!) / weight!) - stu!).toStringAsFixed(2));
+        if (resultsA! > 100 || resultsA! < 0) {
+          resultsA = -1;
+        }
+      } else if (want > 70) {
+        resultsB = double.parse(
+            (max! * ((want - otherPts!) / weight!) - stu!).toStringAsFixed(2));
+        if (resultsB! > 100 || resultsB! < 0) {
+          resultsB = -1;
+        }
+      } else {
+        resultsC = double.parse(
+            (max! * ((want - otherPts!) / weight!) - stu!).toStringAsFixed(2));
+        if (resultsC! > 100 || resultsC! < 0) {
+          resultsC = -1;
+        }
       }
-    } else {
-      resultsC = double.parse(
-          (max! * ((want - otherPts!) / weight!) - stu!).toStringAsFixed(2));
-      if (resultsC! > 100 || resultsC! < 0) {
-        resultsC = -1;
-      }
-    }
+    });
   }
 
   Assessment(double want) {
-    DG = double.parse(_DG.text);
-    AS = double.parse(_AS.text);
-    MG = double.parse(_MG.text);
-    stu = double.parse(_stu.text);
-    max = double.parse(_max.text);
-    weight = double.parse(_weight.text);
+    setState(() {
+      DG = double.parse(_DG.text);
+      AS = double.parse(_AS.text);
+      MG = double.parse(_MG.text);
+      stu = double.parse(_stu.text);
+      max = double.parse(_max.text);
+      weight = double.parse(_weight.text);
 
-    otherPts = MG! + DG!;
-    max = max! + 100;
+      otherPts = MG! + DG!;
+      max = max! + 100;
 
-    temp = double.parse(_poss.text);
-    if (temp! > 0.0) {
-      possible = (((stu! + temp!) / max!) * weight!) + otherPts!;
-    }
+      temp = double.parse(_poss.text);
+      if (temp! > 0.0) {
+        possible = (((stu! + temp!) / max!) * weight!) + otherPts!;
+      }
 
-    if (want > 80) {
-      resultsA = double.parse(
-          (max! * ((want - otherPts!) / weight!) - stu!).toStringAsFixed(2));
-      if (resultsA! > 100 || resultsA! < 0) {
-        resultsA = -1;
+      if (want > 80) {
+        resultsA = double.parse(
+            (max! * ((want - otherPts!) / weight!) - stu!).toStringAsFixed(2));
+        if (resultsA! > 100 || resultsA! < 0) {
+          resultsA = -1;
+        }
+      } else if (want > 70) {
+        resultsB = double.parse(
+            (max! * ((want - otherPts!) / weight!) - stu!).toStringAsFixed(2));
+        if (resultsB! > 100 || resultsB! < 0) {
+          resultsB = -1;
+        }
+      } else {
+        resultsC = double.parse(
+            (max! * ((want - otherPts!) / weight!) - stu!).toStringAsFixed(2));
+        if (resultsC! > 100 || resultsC! < 0) {
+          resultsC = -1;
+        }
       }
-    } else if (want > 70) {
-      resultsB = double.parse(
-          (max! * ((want - otherPts!) / weight!) - stu!).toStringAsFixed(2));
-      if (resultsB! > 100 || resultsB! < 0) {
-        resultsB = -1;
-      }
-    } else {
-      resultsC = double.parse(
-          (max! * ((want - otherPts!) / weight!) - stu!).toStringAsFixed(2));
-      if (resultsC! > 100 || resultsC! < 0) {
-        resultsC = -1;
-      }
-    }
+    });
   }
 
   Major(double want) {
-    DG = double.parse(_DG.text);
-    AS = double.parse(_AS.text);
-    MG = double.parse(_MG.text);
-    stu = double.parse(_stu.text);
-    max = double.parse(_max.text);
-    weight = double.parse(_weight.text);
+    setState(() {
+      DG = double.parse(_DG.text);
+      AS = double.parse(_AS.text);
+      MG = double.parse(_MG.text);
+      stu = double.parse(_stu.text);
+      max = double.parse(_max.text);
+      weight = double.parse(_weight.text);
 
-    otherPts = AS! + DG!;
-    max = max! + 100;
+      otherPts = AS! + DG!;
+      max = max! + 100;
 
-    temp = double.parse(_poss.text);
-    if (temp! > 0.0) {
-      possible = (((stu! + temp!) / max!) * weight!) + otherPts!;
-    }
+      temp = double.parse(_poss.text);
+      if (temp! > 0.0) {
+        possible = (((stu! + temp!) / max!) * weight!) + otherPts!;
+      }
 
-    if (want > 80) {
-      resultsA = double.parse(
-          (max! * ((want - otherPts!) / weight!) - stu!).toStringAsFixed(2));
-      if (resultsA! > 100 || resultsA! < 0) {
-        resultsA = -1;
+      if (want > 80) {
+        resultsA = double.parse(
+            (max! * ((want - otherPts!) / weight!) - stu!).toStringAsFixed(2));
+        if (resultsA! > 100 || resultsA! < 0) {
+          resultsA = -1;
+        }
+      } else if (want > 70) {
+        resultsB = double.parse(
+            (max! * ((want - otherPts!) / weight!) - stu!).toStringAsFixed(2));
+        if (resultsB! > 100 || resultsB! < 0) {
+          resultsB = -1;
+        }
+      } else {
+        resultsC = double.parse(
+            (max! * ((want - otherPts!) / weight!) - stu!).toStringAsFixed(2));
+        if (resultsC! > 100 || resultsC! < 0) {
+          resultsC = -1;
+        }
       }
-    } else if (want > 70) {
-      resultsB = double.parse(
-          (max! * ((want - otherPts!) / weight!) - stu!).toStringAsFixed(2));
-      if (resultsB! > 100 || resultsB! < 0) {
-        resultsB = -1;
-      }
-    } else {
-      resultsC = double.parse(
-          (max! * ((want - otherPts!) / weight!) - stu!).toStringAsFixed(2));
-      if (resultsC! > 100 || resultsC! < 0) {
-        resultsC = -1;
-      }
-    }
+    });
   }
 
   @override

@@ -1,21 +1,6 @@
 import 'package:flutter/material.dart';
 
-var MONTHS = [
-  "Janurary",
-  "Feburary",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December"
-];
-
-class HomePage extends StatelessWidget {
+class HomePagez extends StatelessWidget {
   DateTime date = DateTime.now();
 
   @override
